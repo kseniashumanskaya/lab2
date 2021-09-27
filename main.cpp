@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿
+#include <iostream>
 #include <cstdlib>
 #include <ctime>
 using namespace std;
@@ -8,15 +9,15 @@ int main() {
     cout << "enter the size of the array:" << endl;
     cin >> size;
     double* arr = new double[size];
-
     cout << " enter 0 if you want to fill the array with random numbers and 1 - from consol" << endl;
     int array_filling_option;
     cin >> array_filling_option;
     if (array_filling_option == 0) {
         srand(time(0));
         for (int i = 0; i < size; i++) {
-            arr[i] = (rand() % 10000 - 5000) / (float) 100;
-            cout << arr[i] << endl;
+            arr[i] = (float)(rand() % 10000 - 5000) / 100;
+            cout << arr[i] << "\t";
+            cout << arr + i << endl;
         }
     }
     else {
@@ -25,11 +26,13 @@ int main() {
         {
             cin >> arr[i];
         }
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++)
+        {
             cout << arr[i] << "\t";
             cout << arr + i << endl;
         }
     }
+
     for (int i = 1; i < size - 1; i++)
     {
         if ((arr[i] < arr[i - 1]) && (arr[i] < arr[i + 1]))
